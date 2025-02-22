@@ -129,7 +129,6 @@ export default function OrderPizza({ onSubmit }) {
 
       <section className="bej-part">
         <div className="bej-part-icerik">
-          <img src="/images/iteration-2-images/pictures/form-banner.png" />
           <nav className="nav-menu">
             <a href="/">Anasayfa </a>
             <p> - </p>
@@ -258,7 +257,7 @@ export default function OrderPizza({ onSubmit }) {
 
         <section>
           <Button onClick={handleDecrement}>-</Button>
-          <span>{count}</span>
+          <span style={{textAlign:"center"}}>{count}</span>
           <Button onClick={handleIncrement}>+</Button>
         </section>
 
