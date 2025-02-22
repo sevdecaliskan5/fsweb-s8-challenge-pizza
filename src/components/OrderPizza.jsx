@@ -14,12 +14,20 @@ import LogoSVG from "./images/iteration-1-images/logo.svg";
 
 // kullanicidan alinacak veriler objesi tanimlandi
 const initialData = {
+  isimSoyisim: "",
   boyut: "",
   hamur: "",
   malzemeler: [],
   siparisNotu: "",
   miktar: "",
 };
+
+const errorMessages = {
+    boyut: "* Lütfen bir boyut seçin.",
+  };
+
+
+  newErrors.boyut = !form.boyut ? errorMessages.boyut : "";
 
 return (
   <>
@@ -52,6 +60,40 @@ return (
       </div>
     </section>
 
-    
+    <Form className="order-pizza-form" onSubmit={handleSubmit}>
+        <section className="boyut">
+          <FormGroup>
+            <Label>Boyut Seç*</Label>
+            <FormGroup check>
+              <Input
+                name="boyut"
+                type="radio"
+                value="S"
+                onChange={handleChange}
+              />
+              <Label check>S</Label>
+            </FormGroup>
+            <FormGroup check>
+              <Input
+                name="boyut"
+                type="radio"
+                value="M"
+                onChange={handleChange}
+              />
+              <Label check>M</Label>
+            </FormGroup>
+            <FormGroup check>
+              <Input
+                name="boyut"
+                type="radio"
+                value="L"
+                onChange={handleChange}
+              />
+              <Label check>L</Label>
+            </FormGroup>
+            {errors.boyut && <FormFeedback>{errorMessages.boyut}</FormFeedback>}
+          </FormGroup>
+
+          </section>
   </>
 );
