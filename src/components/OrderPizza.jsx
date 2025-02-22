@@ -22,56 +22,61 @@ const initialData = {
   miktar: "",
 };
 
+// hata mesajlari duzenlendi
 const errorMessages = {
-    boyut: "* Lütfen bir boyut seçin.",
-    hamur: "* Lütfen hamur kalınlığı seçin.",
-    malzemeler: "* En fazla 10 malzeme seçebilirsiniz!",
+  boyut: "* Lütfen bir boyut seçin.",
+  hamur: "* Lütfen hamur kalınlığı seçin.",
+  malzemeler: "* En fazla 10 malzeme seçebilirsiniz!",
+};
+
+// ek malzeme arrayi olusturuldu
+const malzemeler = [
+  { name: "Pepperoni", label: "Pepperoni" },
+  { name: "Sosis", label: "Sosis" },
+  { name: "Kanada Jambonu", label: "Kanada Jambonu" },
+  { name: "Tavuk Izgara", label: "Tavuk Izgara" },
+  { name: "Soğan", label: "Soğan" },
+  { name: "Ananas", label: "Ananas" },
+  { name: "Domates", label: "Domates" },
+  { name: "Kabak", label: "Kabak" },
+  { name: "Mısır", label: "Mısır" },
+  { name: "Sucuk", label: "Sucuk" },
+  { name: "Jalepeno", label: "Jalepeno" },
+  { name: "Sarımsak", label: "Sarımsak" },
+  { name: "Biber", label: "Biber" },
+];
+
+export default function OrderPizza({ onSubmit }) {
+  const [form, setForm] = useState(initialData);
+  const [errors, setErrors] = useState(initialData);
+  const [isValid, setIsValid] = useState(false);
+  const [count, setCount] = useState(1);
+  const history = useHistory();
+
+  useEffect(() => {
+    validateForm();
+  }, [form]);
+
+  const validateForm = () => {
+    let newErrors = {};
+
+    newErrors.boyut = !form.boyut ? errorMessages.boyut : "";
+
+    newErrors.hamur = !form.hamur ? errorMessages.hamur : "";
+
+    newErrors.malzemeler =
+      form.malzemeler.length > 10 ? errorMessages.malzemeler : "";
+
+    newErrors.isimSoyisim =
+      !form.isimSoyisim || form.isimSoyisim.length < 3
+        ? errorMessages.isimSoyisim
+        : "";
+
+    setErrors(newErrors);
+
+    const isValidForm = Object.values(newErrors).every((e) => e === "");
+    setIsValid(isValidForm);
   };
-
-  const malzemeler = [
-    { name: "Pepperoni", label: "Pepperoni" },
-    { name: "Sosis", label: "Sosis" },
-    { name: "Kanada Jambonu", label: "Kanada Jambonu" },
-    { name: "Tavuk Izgara", label: "Tavuk Izgara" },
-    { name: "Soğan", label: "Soğan" },
-    { name: "Ananas", label: "Ananas" },
-    { name: "Domates", label: "Domates" },
-    { name: "Kabak", label: "Kabak" },
-    { name: "Mısır", label: "Mısır" },
-    { name: "Sucuk", label: "Sucuk" },
-    { name: "Jalepeno", label: "Jalepeno" },
-    { name: "Sarımsak", label: "Sarımsak" },
-    { name: "Biber", label: "Biber" },
-  ];
-
-  export default function OrderPizza({ onSubmit }) {
-    const [form, setForm] = useState(initialData);
-    const [errors, setErrors] = useState(initialData);
-    const [isValid, setIsValid] = useState(false);
-
-    useEffect(() => {
-        validateForm();
-      }, [form]);
-    
-
-      const validateForm = () => {
-        let newErrors = {};
-    
-
-  newErrors.boyut = !form.boyut ? errorMessages.boyut : "";
-  
-  newErrors.hamur = !form.hamur ? errorMessages.hamur : "";
-
-  newErrors.malzemeler = form.malzemeler.length > 10
-  ? errorMessages.malzemeler
-  : "";
-
-  newErrors.isimSoyisim =
-  !form.isimSoyisim || form.isimSoyisim.length < 3
-    ? errorMessages.isimSoyisim
-    : "";
-
-  }
 
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -85,41 +90,69 @@ const errorMessages = {
       setForm({ ...form, [name]: value });
     }
   };
-  }
 
+  const handleDecrement = () => {
+    if (count > 1) {
+      setCount(count - 1);
+    }
+  };
 
-return (
-  <>
-    <header className="form-header">
-      <img src={LogoSVG} />
-    </header>
+  const handleIncrement = () => {
+    setCount(count + 1);
+  };
 
-    <section className="bej-part">
-      <div className="bej-part-icerik">
-        <img src="./images/iteration-2-images/form-banner.png" />
-        <nav className="nav-menu">
-          <a href="/">Anasayfa </a>
-          <p> - </p>
-          <a href="/siparis-olustur"> Sipariş Oluştur</a>
-        </nav>
-        <h2>Position Absolute Acı Pizza</h2>
-        <div className="pizza-info">
-          <h1>85.5 ₺</h1>
-          <p>4.9</p>
-          <p>(200)</p>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const updatedForm = { ...form, miktar: count };
+
+    axios
+      .post("https://reqres.in/api/pizza", updatedForm)
+      .then((response) => {
+        onSubmit(response.data);
+        if (isValid) {
+          history.push("/siparis-alindi");
+        } else {
+          throw new Error("Sipariş verileri eksik veya hatalı!");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  return (
+    <>
+      <header className="form-header">
+        <img src={LogoSVG} />
+      </header>
+
+      <section className="bej-part">
+        <div className="bej-part-icerik">
+          <img src="./images/iteration-2-images/form-banner.png" />
+          <nav className="nav-menu">
+            <a href="/">Anasayfa </a>
+            <p> - </p>
+            <a href="/siparis-olustur"> Sipariş Oluştur</a>
+          </nav>
+          <h2>Position Absolute Acı Pizza</h2>
+          <div className="pizza-info">
+            <h1>85.5 ₺</h1>
+            <p>4.9</p>
+            <p>(200)</p>
+          </div>
+          <p style={{ color: "#5F5F5F" }}>
+            Frontend Dev olarak hala position:absolute kullanıyorsan bu çok acı
+            pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli
+            diğer malzemelerle kaplanmış, daha sonra geleneksel olarak odun
+            ateşinde bir fırında yüksek sıcaklıkta pişirilen, genellikle
+            yuvarlak, düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan
+            kökenli lezzetli bir yemektir. Küçük bir pizzaya bazen pizzetta
+            denir.
+          </p>
         </div>
-        <p style={{ color: "#5F5F5F" }}>
-          Frontend Dev olarak hala position:absolute kullanıyorsan bu çok acı
-          pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli
-          diğer malzemelerle kaplanmış, daha sonra geleneksel olarak odun
-          ateşinde bir fırında yüksek sıcaklıkta pişirilen, genellikle yuvarlak,
-          düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan kökenli
-          lezzetli bir yemektir. Küçük bir pizzaya bazen pizzetta denir.
-        </p>
-      </div>
-    </section>
+      </section>
 
-    <Form className="order-pizza-form" onSubmit={handleSubmit}>
+      <Form className="order-pizza-form" onSubmit={handleSubmit}>
         <section className="boyut">
           <FormGroup>
             <Label>Boyut Seç*</Label>
@@ -168,13 +201,13 @@ return (
             </Input>
             {errors.hamur && <FormFeedback>{errorMessages.hamur}</FormFeedback>}
           </FormGroup>
-          </section>
+        </section>
 
-          <section className="ekMalzemeler">
+        <section className="ekMalzemeler">
           <FormGroup check>
             <Label for="ekMalzemeler">Ek Malzemeler</Label>
             <FormText htmlFor="ekMalzemeler">
-              En fazla 10 malzeme seçebilirsiniz. ₺5 
+              En fazla 10 malzeme seçebilirsiniz. ₺5
             </FormText>
             <div className="material-columns">
               {malzemeler.map((malzeme) => (
@@ -221,6 +254,17 @@ return (
             />
           </FormGroup>
         </section>
-        
-  </>
-);
+
+        <section>
+          <Button onClick={handleDecrement}>-</Button>
+          <span>{count}</span>
+          <Button onClick={handleIncrement}>+</Button>
+        </section>
+
+        <Button color="primary" type="submit" disabled={!isValid}>
+          Sipariş Ver
+        </Button>
+      </Form>
+    </>
+  );
+}
