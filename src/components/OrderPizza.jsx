@@ -207,5 +207,20 @@ return (
             <FormFeedback>{errors.isimSoyisim}</FormFeedback>
           </FormGroup>
         </section>
+
+        <section>
+          <FormGroup className="form-text-area">
+            <Label for="siparisNotu">Sipariş Notu</Label>
+            <Input
+              id="siparisNotu"
+              name="siparisNotu"
+              placeholder="Siparişinize özel bir not ekleyin."
+              type="text"
+              value={form.siparisNotu}
+              onChange={handleChange}
+            />
+          </FormGroup>
+        </section>
+        
   </>
 );
