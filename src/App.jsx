@@ -9,12 +9,27 @@ import Footer from "./components/Footer";
 import React, { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [orderData, setOrderData] = useState(null);
+
+  const handleOrderData = (d) => {
+    setOrderData(d);
+  };
 
   return (
-    <>
-    </>
-  )
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <MainPage />
+        </Route>
+        <Route path="/siparis-olustur">
+          <OrderPizza onSubmit={handleOrderData} />
+        </Route>
+        <Route path="/siparis-alindi">
+          <Success orderData={orderData} />
+        </Route>
+      </Switch>
+    </Router>
+  );
 }
 
-export default App
+export default App;
