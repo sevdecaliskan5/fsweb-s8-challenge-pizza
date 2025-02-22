@@ -47,6 +47,7 @@ const errorMessages = {
   export default function OrderPizza({ onSubmit }) {
     const [form, setForm] = useState(initialData);
     const [errors, setErrors] = useState(initialData);
+    const [isValid, setIsValid] = useState(false);
 
     useEffect(() => {
         validateForm();
@@ -65,6 +66,11 @@ const errorMessages = {
   ? errorMessages.malzemeler
   : "";
 
+  newErrors.isimSoyisim =
+  !form.isimSoyisim || form.isimSoyisim.length < 3
+    ? errorMessages.isimSoyisim
+    : "";
+
   }
 
   const handleChange = (event) => {
@@ -80,6 +86,8 @@ const errorMessages = {
     }
   };
   }
+
+
 return (
   <>
     <header className="form-header">
@@ -160,6 +168,7 @@ return (
             </Input>
             {errors.hamur && <FormFeedback>{errorMessages.hamur}</FormFeedback>}
           </FormGroup>
+          </section>
 
           <section className="ekMalzemeler">
           <FormGroup check>
@@ -183,6 +192,20 @@ return (
           </FormGroup>
         </section>
 
-          </section>
+        <section>
+          <FormGroup className="form-text-area">
+            <Label for="isimSoyisim">İsim-Soyisim*</Label>
+            <Input
+              id="isimSoyisim"
+              name="isimSoyisim"
+              placeholder="Lütfen isminizi girin."
+              type="text"
+              value={form.isimSoyisim}
+              onChange={handleChange}
+              invalid={errors.isimSoyisim !== ""}
+            />
+            <FormFeedback>{errors.isimSoyisim}</FormFeedback>
+          </FormGroup>
+        </section>
   </>
 );
