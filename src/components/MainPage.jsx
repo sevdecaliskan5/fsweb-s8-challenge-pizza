@@ -10,6 +10,7 @@ import {
   CardTitle,
   CardText,
 } from "reactstrap";
+import Footer from "./Footer";
 
 
 export default function MainPage() {
@@ -207,6 +208,7 @@ export default function MainPage() {
             </div>
           </div>
         </section>
+        <Footer />
       </main>
     </>
   );

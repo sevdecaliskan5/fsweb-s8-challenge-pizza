@@ -11,6 +11,7 @@ import {
   FormFeedback,
 } from "reactstrap";
 import LogoSVG from "./images/iteration-1-images/logo.svg";
+import Footer from "./Footer";
 
 // kullanicidan alinacak veriler objesi tanimlandi
 const initialData = {
@@ -265,6 +266,7 @@ export default function OrderPizza({ onSubmit }) {
           Sipariş Ver
         </Button>
       </Form>
+      <Footer />
     </>
   );
 }
