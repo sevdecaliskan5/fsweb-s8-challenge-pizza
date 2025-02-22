@@ -591,3 +591,30 @@ footer li {
 footer img {
   padding: 5px;
 }
+
+@media (max-width: 768px) {
+  .firsat {
+    display: none;
+  }
+
+  .main-title {
+    flex-wrap: wrap;
+    line-height: 1.2em;
+  }
+
+  .main-nav li {
+    flex: 1 0 48%;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card-1,
+  .card-2,
+  .card-3 {
+    width: 100%;
+  }
+}
