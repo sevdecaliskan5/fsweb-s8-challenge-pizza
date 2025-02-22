@@ -568,28 +568,53 @@ footer div {
   margin-top: 50px;
 }
 
-footer ul {
+footer ul li {
   padding: 10px;
   list-style-type: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.4s ease-in-out;
 }
 
-footer li {
-  text-decoration: none;
+footer ul li:hover {
+  color: #ce2829;
 }
 
 .secondary-footer {
-  height: 100px;
+  height: 40px;
   border-top: 1px solid white;
   justify-content: flex-start;
   align-items: center;
+  color: #5f5f5f;
 }
 
 .secondary-footer p {
-  margin-left: 50px;
+  margin-left: 10px;
 }
 
-footer img {
-  padding: 5px;
+.insta-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  list-style: none;
+  padding: 0;
+  justify-content: center;
+}
+
+.insta-gallery li {
+  width: 100px;
+  height: auto;
+}
+
+.insta-gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: filter 0.4s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.insta-gallery img:hover {
+  filter: brightness(80%);
+  transform: scale(1.05);
 }
 
 @media (max-width: 768px) {

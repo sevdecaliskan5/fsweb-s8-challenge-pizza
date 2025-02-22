@@ -33,45 +33,59 @@ export default function Footer() {
         </div>
         <div className="footer-sutun">
           <h3>Hot Menu</h3>
-          <ul>Terminal Pizza</ul>
-          <ul>5 Kişilik Hackathlon Pizza</ul>
-          <ul>useEffect Tavuklu Pizza</ul>
-          <ul>Beyaz Console Frosty</ul>
-          <ul>Testler Geçti Mutlu Burger</ul>
-          <ul>Position Absolute Acı Burger</ul>
+          <ul>
+            <li>Terminal Pizza</li>
+            <li>5 Kişilik Hackathlon Pizza</li>
+            <li>useEffect Tavuklu Pizza</li>
+            <li>Beyaz Console Frosty</li>
+            <li>Testler Geçti Mutlu Burger</li>
+            <li>Position Absolute Acı Burger</li>
+          </ul>
         </div>
+
         <div className="footer-sutun">
           <h3>Instagram</h3>
-          <ul>
-            <img
-              src="/images/iteration-2-images/footer/insta/li-0.png"
-              alt=""
-            />
-            <img
-              src="/images/iteration-2-images/footer/insta/li-1.png"
-              alt=""
-            />
-            <img
-              src="/images/iteration-2-images/footer/insta/li-2.png"
-              alt=""
-            />
-          </ul>
-          <ul>
-            <img
-              src="/images/iteration-2-images/footer/insta/li-3.png"
-              alt=""
-            />
-            <img
-              src="/images/iteration-2-images/footer/insta/li-4.png"
-              alt=""
-            />
-            <img
-              src="/images/iteration-2-images/footer/insta/li-5.png"
-              alt=""
-            />
+          <ul className="insta-gallery">
+            <li>
+              <img
+                src="/images/iteration-2-images/footer/insta/li-0.png"
+                alt="Instagram 0"
+              />
+            </li>
+            <li>
+              <img
+                src="/images/iteration-2-images/footer/insta/li-1.png"
+                alt="Instagram 1"
+              />
+            </li>
+            <li>
+              <img
+                src="/images/iteration-2-images/footer/insta/li-2.png"
+                alt="Instagram 2"
+              />
+            </li>
+            <li>
+              <img
+                src="/images/iteration-2-images/footer/insta/li-3.png"
+                alt="Instagram 3"
+              />
+            </li>
+            <li>
+              <img
+                src="/images/iteration-2-images/footer/insta/li-4.png"
+                alt="Instagram 4"
+              />
+            </li>
+            <li>
+              <img
+                src="/images/iteration-2-images/footer/insta/li-5.png"
+                alt="Instagram 5"
+              />
+            </li>
           </ul>
         </div>
       </footer>
+      
       <footer className="secondary-footer">
         <p>© 2025 Teknolojik Yemekler.</p>
       </footer>
