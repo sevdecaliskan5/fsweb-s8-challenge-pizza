@@ -1,4 +1,4 @@
-import LogoSVG from "/images/iteration-1-images/logo.svg";
+import LogoSVG from "../../images/iteration-1-images/logo.svg";
 import { useHistory } from "react-router-dom";
 import React from "react";
 

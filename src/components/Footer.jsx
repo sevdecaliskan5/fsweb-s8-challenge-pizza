@@ -1,5 +1,5 @@
 import React from "react";
-import LogoFooterSVG from "/images/iteration-2-images/footer/logo-footer.svg";
+import LogoFooterSVG from "../../images/iteration-2-images/footer/logo-footer.svg";
 
 export default function Footer() {
   return (
@@ -43,14 +43,32 @@ export default function Footer() {
         <div className="footer-sutun">
           <h3>Instagram</h3>
           <ul>
-            <img src="/images/iteration-2-images/footer/insta/li-0.png" alt="" />
-            <img src="/images/iteration-2-images/footer/insta/li-1.png" alt="" />
-            <img src="/images/iteration-2-images/footer/insta/li-2.png" alt="" />
+            <img
+              src="/images/iteration-2-images/footer/insta/li-0.png"
+              alt=""
+            />
+            <img
+              src="/images/iteration-2-images/footer/insta/li-1.png"
+              alt=""
+            />
+            <img
+              src="/images/iteration-2-images/footer/insta/li-2.png"
+              alt=""
+            />
           </ul>
           <ul>
-            <img src="/images/iteration-2-images/footer/insta/li-3.png" alt="" />
-            <img src="/images/iteration-2-images/footer/insta/li-4.png" alt="" />
-            <img src="/images/iteration-2-images/footer/insta/li-5.png" alt="" />
+            <img
+              src="/images/iteration-2-images/footer/insta/li-3.png"
+              alt=""
+            />
+            <img
+              src="/images/iteration-2-images/footer/insta/li-4.png"
+              alt=""
+            />
+            <img
+              src="/images/iteration-2-images/footer/insta/li-5.png"
+              alt=""
+            />
           </ul>
         </div>
       </footer>

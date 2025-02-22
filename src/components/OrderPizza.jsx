@@ -10,7 +10,7 @@ import {
   FormText,
   FormFeedback,
 } from "reactstrap";
-import LogoSVG from "./images/iteration-1-images/logo.svg";
+import LogoSVG from "../../images/iteration-1-images/logo.svg";
 import Footer from "./Footer";
 
 // kullanicidan alinacak veriler objesi tanimlandi
@@ -129,7 +129,7 @@ export default function OrderPizza({ onSubmit }) {
 
       <section className="bej-part">
         <div className="bej-part-icerik">
-          <img src="./images/iteration-2-images/form-banner.png" />
+          <img src="/images/iteration-2-images/pictures/form-banner.png" />
           <nav className="nav-menu">
             <a href="/">Anasayfa </a>
             <p> - </p>
