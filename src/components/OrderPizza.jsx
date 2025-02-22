@@ -25,13 +25,61 @@ const initialData = {
 const errorMessages = {
     boyut: "* Lütfen bir boyut seçin.",
     hamur: "* Lütfen hamur kalınlığı seçin.",
+    malzemeler: "* En fazla 10 malzeme seçebilirsiniz!",
   };
 
+  const malzemeler = [
+    { name: "Pepperoni", label: "Pepperoni" },
+    { name: "Sosis", label: "Sosis" },
+    { name: "Kanada Jambonu", label: "Kanada Jambonu" },
+    { name: "Tavuk Izgara", label: "Tavuk Izgara" },
+    { name: "Soğan", label: "Soğan" },
+    { name: "Ananas", label: "Ananas" },
+    { name: "Domates", label: "Domates" },
+    { name: "Kabak", label: "Kabak" },
+    { name: "Mısır", label: "Mısır" },
+    { name: "Sucuk", label: "Sucuk" },
+    { name: "Jalepeno", label: "Jalepeno" },
+    { name: "Sarımsak", label: "Sarımsak" },
+    { name: "Biber", label: "Biber" },
+  ];
+
+  export default function OrderPizza({ onSubmit }) {
+    const [form, setForm] = useState(initialData);
+    const [errors, setErrors] = useState(initialData);
+
+    useEffect(() => {
+        validateForm();
+      }, [form]);
+    
+
+      const validateForm = () => {
+        let newErrors = {};
+    
 
   newErrors.boyut = !form.boyut ? errorMessages.boyut : "";
   
   newErrors.hamur = !form.hamur ? errorMessages.hamur : "";
 
+  newErrors.malzemeler = form.malzemeler.length > 10
+  ? errorMessages.malzemeler
+  : "";
+
+  }
+
+  const handleChange = (event) => {
+    const { name, value, type, checked } = event.target;
+
+    if (type === "checkbox") {
+      const updatedMalzemeler = checked
+        ? [...form.malzemeler, name]
+        : form.malzemeler.filter((item) => item !== name);
+      setForm({ ...form, malzemeler: updatedMalzemeler });
+    } else {
+      setForm({ ...form, [name]: value });
+    }
+  };
+  }
 return (
   <>
     <header className="form-header">
@@ -112,6 +160,28 @@ return (
             </Input>
             {errors.hamur && <FormFeedback>{errorMessages.hamur}</FormFeedback>}
           </FormGroup>
+
+          <section className="ekMalzemeler">
+          <FormGroup check>
+            <Label for="ekMalzemeler">Ek Malzemeler</Label>
+            <FormText htmlFor="ekMalzemeler">
+              En fazla 10 malzeme seçebilirsiniz. ₺5 
+            </FormText>
+            <div className="material-columns">
+              {malzemeler.map((malzeme) => (
+                <div className="material-item" key={malzeme.name}>
+                  <Input
+                    type="checkbox"
+                    onChange={handleChange}
+                    name={malzeme.name}
+                  />
+                  <Label check>{malzeme.label}</Label>
+                </div>
+              ))}
+            </div>
+            <FormFeedback>{errors.malzemeler}</FormFeedback>
+          </FormGroup>
+        </section>
 
           </section>
   </>
