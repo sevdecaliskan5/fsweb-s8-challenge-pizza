@@ -24,10 +24,13 @@ const initialData = {
 
 const errorMessages = {
     boyut: "* Lütfen bir boyut seçin.",
+    hamur: "* Lütfen hamur kalınlığı seçin.",
   };
 
 
   newErrors.boyut = !form.boyut ? errorMessages.boyut : "";
+  
+  newErrors.hamur = !form.hamur ? errorMessages.hamur : "";
 
 return (
   <>
@@ -92,6 +95,22 @@ return (
               <Label check>L</Label>
             </FormGroup>
             {errors.boyut && <FormFeedback>{errorMessages.boyut}</FormFeedback>}
+          </FormGroup>
+
+          <FormGroup>
+            <Label for="hamurKalinligi">Hamur Seç*</Label>
+            <Input
+              id="hamurKalinligi"
+              name="hamur"
+              type="select"
+              onChange={handleChange}
+            >
+              <option value="">- Hamur Kalınlığı Seç -</option>
+              <option value="İnce">İnce</option>
+              <option value="Orta">Orta</option>
+              <option value="Kalın">Kalın</option>
+            </Input>
+            {errors.hamur && <FormFeedback>{errorMessages.hamur}</FormFeedback>}
           </FormGroup>
 
           </section>
