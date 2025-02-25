@@ -28,6 +28,7 @@ const errorMessages = {
   boyut: "* Lütfen bir boyut seçin.",
   hamur: "* Lütfen hamur kalınlığı seçin.",
   malzemeler: "* En fazla 10 malzeme seçebilirsiniz!",
+  isimSoyisim: "* İsim en az 3 karakter içermelidir.",
 };
 
 // ek malzeme arrayi olusturuldu
@@ -129,8 +130,9 @@ export default function OrderPizza({ onSubmit }) {
 
       <section className="bej-part">
         <div className="bej-part-icerik">
+          <img src="./images/iteration-2-images/pictures/form-banner.png"/>
           <nav className="nav-menu">
-            <a href="/">Anasayfa </a>
+            <a href="/">Anasayfa  </a>
             <p> - </p>
             <a href="/siparis-olustur"> Sipariş Oluştur</a>
           </nav>
@@ -155,7 +157,7 @@ export default function OrderPizza({ onSubmit }) {
       <Form className="order-pizza-form" onSubmit={handleSubmit}>
         <section className="boyut">
           <FormGroup>
-            <Label>Boyut Seç*</Label>
+            <Label>Boyut Seç *</Label>
             <FormGroup check>
               <Input
                 name="boyut"
@@ -187,14 +189,14 @@ export default function OrderPizza({ onSubmit }) {
           </FormGroup>
 
           <FormGroup>
-            <Label for="hamurKalinligi">Hamur Seç*</Label>
+            <Label for="hamurKalinligi">Hamur Seç *</Label>
             <Input
               id="hamurKalinligi"
               name="hamur"
               type="select"
               onChange={handleChange}
             >
-              <option value="">- Hamur Kalınlığı Seç -</option>
+              <option value=""> Hamur Kalınlığı Seç </option>
               <option value="İnce">İnce</option>
               <option value="Orta">Orta</option>
               <option value="Kalın">Kalın</option>
@@ -227,7 +229,7 @@ export default function OrderPizza({ onSubmit }) {
 
         <section>
           <FormGroup className="form-text-area">
-            <Label for="isimSoyisim">İsim-Soyisim*</Label>
+            <Label for="isimSoyisim">İsim-Soyisim *</Label>
             <Input
               id="isimSoyisim"
               name="isimSoyisim"

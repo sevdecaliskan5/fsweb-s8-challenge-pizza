@@ -22,6 +22,13 @@
   margin-top: 20px;
 }
 
+.success-title {
+  font-family: Satisfy;
+  color: #fdc913;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
 /* button */
 button {
   background-color: #fdc913;
@@ -338,7 +345,7 @@ button:hover {
 .form-select {
   background-color: #faf7f2;
   border-radius: 20px;
-  padding: 20px;
+  padding: 15px;
   border: none;
 }
 
@@ -507,8 +514,10 @@ button:hover {
 }
 
 .siparis-alindi-info h2:first-child {
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   font-size: 22px;
+  justify-content: center;
+  text-align: center;
 }
 
 .siparis-form-info {
@@ -573,11 +582,6 @@ footer ul li {
   list-style-type: none;
   text-decoration: none;
   cursor: pointer;
-  transition: color 0.4s ease-in-out;
-}
-
-footer ul li:hover {
-  color: #ce2829;
 }
 
 .secondary-footer {

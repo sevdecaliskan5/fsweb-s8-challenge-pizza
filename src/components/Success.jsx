@@ -24,7 +24,7 @@ export default function Success({ orderData }) {
       <header className="success-page">
         <img src={LogoSVG} alt="Logo" />
         <section className="siparis-alindi">
-          <h3 className="secondary-title">Lezzetin Yolda</h3>
+          <h3 className="success-title">Lezzetin Yolda</h3>
           <h1 className="main-title">
             TEBRİKLER! <br />
             SİPARİŞİNİZ ALINDI!
