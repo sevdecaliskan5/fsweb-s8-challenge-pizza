@@ -101,17 +101,22 @@ button:hover {
 /* cards */
 .main-page {
   background-color: #faf7f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .cards {
   display: grid;
-  justify-items: center;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
   grid-gap: 0.5rem;
   padding: 100px;
   width: 80%;
   margin: 0 auto;
+  max-width: 1200px;
+  align-items: center;
+  justify-content: center;
 }
 
 .overlay-content {
@@ -248,6 +253,8 @@ button:hover {
 .vitrin-cards {
   display: flex;
   justify-content: space-around;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 /* orderpizza */
@@ -456,6 +463,13 @@ button:hover {
   background-color: #faf7f2;
 }
 
+.bej-part,
+.order-pizza-form,
+.siparis-container {
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 .siparis-container form {
   flex: 1;
   display: flex;
@@ -565,12 +579,12 @@ button:hover {
 /* footer */
 footer {
   background-color: #1a1a1a;
-  height: 500px;
   color: white;
   display: flex;
   justify-content: space-around;
   font-size: 14px;
   letter-spacing: 1.1px;
+  width: 100vw;
 }
 
 footer div {
@@ -637,13 +651,56 @@ footer ul li {
 
   .cards {
     grid-template-columns: 1fr;
+    max-width: 90%;
+    padding: 50px 20px;
+  }
+
+  .vitrin {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vitrin-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .vitrin-card-container {
+    width: 80%;
+    text-align: center;
+  }
+
+  .main-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding-left: 30px;
+  }
+
+  .form-header {
     justify-content: center;
     align-items: center;
   }
 
-  .card-1,
-  .card-2,
-  .card-3 {
+  .order-pizza-form {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bej-part {
+    padding: 0 20px;
     width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .order-pizza-form section {
+    padding: 0 20px;
+  }
+
+  .pizza-info {
+    justify-content: space-between;
+    align-items: center;
   }
 }
