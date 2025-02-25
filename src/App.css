@@ -1,7 +1,7 @@
 /* heading */
 .main-title {
   font-family: Roboto Condensed;
-  font-size: 86px;
+  font-size: 68px;
   font-weight: 300;
   display: flex;
   justify-content: center;
@@ -190,28 +190,31 @@ button:hover {
 }
 
 .secondary-nav {
-  height: 100px;
-  padding: 10px;
-  margin: 10px auto;
+  margin: 5px auto;
 }
 
 .secondary-nav ul {
   list-style: none;
   margin: 0;
-  gap: 10px;
+  gap: 20px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.secondary-nav li {
+  display: flex;
+  justify-content: center;
 }
 
 .secondary-nav a {
   display: flex;
   align-items: center;
   text-decoration: none;
-  border-radius: 50px;
-  background-color: white;
   color: #292929;
   font-weight: 500;
   font-size: 18px;
+  border-radius: 50px;
   padding: 10px 20px;
 }
 
@@ -646,7 +649,11 @@ footer ul li {
   }
 
   .main-nav li {
-    flex: 1 0 48%;
+    flex: 1 0 33%;
+  }
+
+  .secondary-nav li {
+    flex: 1 0 33%;
   }
 
   .cards {
